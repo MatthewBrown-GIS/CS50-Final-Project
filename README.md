@@ -5,6 +5,6 @@ TODO
 
 # Installing
 
-#### In Firefox: Open the [about:debugging](about:debugging) page, click the This Firefox option, click the Load Temporary Add-on button, then select any file in your extension's directory.
+In Firefox: Open the [about:debugging](https://firefox-source-docs.mozilla.org/devtools-user/about_colon_debugging/index.html) page, click the This Firefox option, click the Load Temporary Add-on button, then select any file in your extension's directory.
 
-#### The extension now installs, and remains installed until you restart Firefox.
+The extension now installs, and remains installed until you restart Firefox.
