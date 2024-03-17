@@ -3,16 +3,23 @@
   "name": "Embers for Firefox",
   "version": "1.0",
 
-  "description": "Adds a red border to all webpages matching mozilla.org.",
+  "description": "Converts webpages to dark mode",
 
   "icons": {
     "48": "icons/Embers-48.png",
     "96": "icons/Embers-96.png"
   },
-
+  "permissions": ["notifications", "storage", "tabs", "activeTab" ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/Embers-16.png",
+      "48": "icons/Embers-48.png"
+    }
+  },
   "content_scripts": [
     {
-      "matches": ["*://*.mozilla.org/*"],
+      "matches": ["<all_urls>"],
       "js": ["embers.js"]
     }
   ]

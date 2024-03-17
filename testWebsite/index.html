@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Web Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #f8f9fa;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sample Web Page</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <h2>Welcome to our website!</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <p>This is a sample web page that demonstrates the content of a typical webpage.</p>
+                <button class="btn btn-primary">Click Me</button>
+            </div>
+            <div class="col-md-6">
+                <img src="https://via.placeholder.com/300" class="img-fluid" alt="Placeholder Image">
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-md-6">
+                <h3>Checkboxes</h3>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox1">
+                    <label class="form-check-label" for="checkbox1">
+                        Checkbox 1
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox2">
+                    <label class="form-check-label" for="checkbox2">
+                        Checkbox 2
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>Tables</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>@johndoe</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jane</td>
+                            <td>Smith</td>
+                            <td>@janesmith</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Michael</td>
+                            <td>Jackson</td>
+                            <td>@michaelj</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </main>
+    <footer>
+        &copy; 2024 Sample Web Page. All rights reserved.
+    </footer>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

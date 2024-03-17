@@ -15,3 +15,5 @@ From the official [documentation](https://developer.mozilla.org/en-US/docs/Mozil
 >The extension now installs, and remains installed until you restart Firefox.
 
 >Note: By default extensions don't work in private browsing. If you want to test this extension in private browsing open "about:addons", click on the extension, and select the Allow radio button for Run in Private Windows."
+
+You can also just go here: about:debugging#/runtime/this-firefox to load the addon.
