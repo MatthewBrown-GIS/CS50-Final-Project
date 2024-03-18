@@ -12,28 +12,61 @@ function injectDarkModeStyles() {
     styleElement.id = 'dark-mode-styles';
     styleElement.textContent = `
       /* Dark mode styles */
-      body {
+      body.dark-mode {
         background-color: #222;
         color: #ddd;
       }
-      a {
+
+      body.dark-mode a {
         color: #58a6ff; /* Links color */
       }
-      button {
+
+      body.dark-mode button {
         background-color: #555; /* Button background color */
         color: #fff; /* Button text color */
       }
-      /* Navbar dark mode styles */
-      .navbar-nav {
-        background-color: #333; /* Navbar background color */
+
+      /* Header dark mode styles */
+      body.dark-mode header {
+        background-color: #333 !important;
+        color: #fff !important;
       }
-      .navbar-nav .nav-link {
+
+      /* Navbar dark mode styles */
+      body.dark-mode nav {
+        background-color: #535252 !important; /* Navbar background color */
+      }
+
+      body.dark-mode nav ul li a {
         color: #ddd !important; /* Navbar link color */
       }
-      .navbar-toggler-icon {
+
+      body.dark-mode .navbar-toggler-icon {
         background-color: #fff; /* Navbar toggler icon color */
       }
-      /* Add more dark mode styles for Bootstrap components here */
+
+      /* Table dark mode styles */
+      body.dark-mode table {
+        background-color: #444; /* Table background color */
+        color: #ddd; /* Table text color */
+      }
+
+      body.dark-mode th,
+      body.dark-mode td {
+        border-color: #666; /* Table border color */
+      }
+
+      body.dark-mode th {
+        background-color: #333; /* Table header background color */
+      }
+
+      body.dark-mode tr:nth-child(even) {
+        background-color: #333; /* Alternating row background color */
+      }
+
+      body.dark-mode tr:hover {
+        background-color: #555; /* Hovered row background color */
+      }
     `;
     // Append the <style> element to the <head> of the document
     document.head.appendChild(styleElement);
@@ -54,13 +87,13 @@ function removeDarkModeStyles() {
   }
 }
 
-// Add a listener for messages from the popup script
+// Add a listener for messages from the extension
 browser.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   // Log the received message
   console.log('Message received:', message);
 
   // Check if the message indicates that dark mode should be toggled
-  if (message.toggleDarkMode) {
+  if (message.toggleDarkMode !== undefined) {
     // Log that dark mode toggle is requested
     console.log('Toggle dark mode requested');
 
