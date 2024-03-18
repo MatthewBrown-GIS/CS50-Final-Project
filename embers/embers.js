@@ -1,78 +1,84 @@
 // embers.js
 
-// Log that the content script is loaded
-console.log('Content script loaded');
-
 // Function to inject CSS styles for dark mode
 function injectDarkModeStyles() {
-  // Check if styles have already been injected
-  if (!document.getElementById('dark-mode-styles')) {
-    // Create a <style> element
-    const styleElement = document.createElement('style');
-    styleElement.id = 'dark-mode-styles';
-    styleElement.textContent = `
-      /* Dark mode styles */
-      body.dark-mode {
-        background-color: #222;
-        color: #ddd;
-      }
+  // Create a <style> element
+  const styleElement = document.createElement('style');
+  styleElement.textContent = `
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #222 !important;
+      color: #ddd !important;
+    }
 
-      body.dark-mode a {
-        color: #58a6ff; /* Links color */
-      }
+    body.dark-mode * {
+      color: #fff !important; /* Set all text and spans to white */
+    }
 
-      body.dark-mode button {
-        background-color: #555; /* Button background color */
-        color: #fff; /* Button text color */
-      }
+    body.dark-mode a {
+      color: #58a6ff !important; /* Links color */
+    }
 
-      /* Header dark mode styles */
-      body.dark-mode header {
-        background-color: #333 !important;
-        color: #fff !important;
-      }
+    body.dark-mode button {
+      background-color: #555 !important; /* Button background color */
+      color: #fff !important; /* Button text color */
+    }
 
-      /* Navbar dark mode styles */
-      body.dark-mode nav {
-        background-color: #535252 !important; /* Navbar background color */
-      }
+    /* Header dark mode styles */
+    body.dark-mode header {
+      background-color: #333 !important;
+      color: #fff !important;
+    }
 
-      body.dark-mode nav ul li a {
-        color: #ddd !important; /* Navbar link color */
-      }
+    /* Navbar dark mode styles */
+    body.dark-mode nav {
+      background-color: #333 !important; /* Navbar background color */
+    }
 
-      body.dark-mode .navbar-toggler-icon {
-        background-color: #fff; /* Navbar toggler icon color */
-      }
+    body.dark-mode nav ul li a {
+      color: #ddd !important; /* Navbar link color */
+    }
 
-      /* Table dark mode styles */
-      body.dark-mode table {
-        background-color: #444; /* Table background color */
-        color: #ddd; /* Table text color */
-      }
+    body.dark-mode .navbar-toggler-icon {
+      background-color: #fff !important; /* Navbar toggler icon color */
+    }
 
-      body.dark-mode th,
-      body.dark-mode td {
-        border-color: #666; /* Table border color */
-      }
+    /* Table dark mode styles */
+    body.dark-mode table {
+      background-color: #444 !important; /* Table background color */
+      color: #fff !important; /* Table text color */
+    }
 
-      body.dark-mode th {
-        background-color: #333; /* Table header background color */
-      }
+    body.dark-mode th,
+    body.dark-mode td {
+      border-color: #666 !important; /* Table border color */
+    }
 
-      body.dark-mode tr:nth-child(even) {
-        background-color: #333; /* Alternating row background color */
-      }
+    body.dark-mode th {
+      background-color: #333 !important; /* Table header background color */
+    }
 
-      body.dark-mode tr:hover {
-        background-color: #555; /* Hovered row background color */
-      }
-    `;
-    // Append the <style> element to the <head> of the document
-    document.head.appendChild(styleElement);
-    // Log that dark mode styles have been injected
-    console.log('Dark mode styles injected');
-  }
+    body.dark-mode tr:nth-child(even) {
+      background-color: #333 !important; /* Alternating row background color */
+    }
+
+    body.dark-mode tr:hover {
+      background-color: #555 !important; /* Hovered row background color */
+    }
+
+    /* Dark mode styles for specific sites */
+
+    /* Black background for spans with text */
+    body.dark-mode span:not(:empty) {
+      background-color: #000 !important;
+      color: #fff !important;
+      padding: 2px 4px; /* Optional: Add padding to make the background visible */
+    }
+  `;
+  // Append the <style> element to the <head> of the document
+  document.head.appendChild(styleElement);
+  // Log that dark mode styles have been injected
+  console.log('Dark mode styles injected');
 }
 
 // Function to remove injected CSS styles
@@ -86,6 +92,12 @@ function removeDarkModeStyles() {
     console.log('Dark mode styles removed');
   }
 }
+
+// Inject dark mode styles when the DOM content is loaded
+document.addEventListener('DOMContentLoaded', function () {
+  // Inject dark mode styles
+  injectDarkModeStyles();
+});
 
 // Add a listener for messages from the extension
 browser.runtime.onMessage.addListener(function (message, sender, sendResponse) {

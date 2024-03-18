@@ -9,7 +9,7 @@
     "48": "icons/Embers-48.png",
     "96": "icons/Embers-96.png"
   },
-  "permissions": ["notifications", "storage", "tabs", "activeTab" ],
+  "permissions": ["notifications", "webNavigation", "storage", "tabs", "activeTab" ],
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -20,7 +20,8 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["embers.js"]
+      "js": ["embers.js"],
+      "run_at": "document_start"
     }
   ]
 }
