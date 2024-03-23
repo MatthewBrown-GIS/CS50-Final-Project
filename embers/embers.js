@@ -1,5 +1,7 @@
 // embers.js
 
+/* Citation: OpenAI's ChatGPT was used to help generate various components of this code */
+
 console.log('Embers content script loaded');
 // Function to inject CSS styles for dark mode
 function injectDarkModeStyles() {
