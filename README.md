@@ -1,4 +1,4 @@
-# CS50-Final-Project: Embers for Firefox, a dark-mode add-on
+# CS50x Final Project: Embers for Firefox, a dark-mode add-on
 #### Video Demo:  [https://www.youtube.com/watch?v=tlZnKUs3qQM](https://youtu.be/tlZnKUs3qQM?si=4yHxbfiWCbirhBuB)
 #### Description: This is an experimental add-on for Firefox web browsers that attempts to convert any page into its dark mode equivalent, such that surfing the web at night is less strenuous on the eyes.
 
