@@ -27,7 +27,7 @@ You can also just go here: about:debugging#/runtime/this-firefox to load the add
 # Description of project
 Here is a sketch of the folder directories:
 
-project
+`project
 |-- LICENSE
 |-- README.md
 |-- testWebsite
@@ -45,7 +45,7 @@ project
 |   |   |-- Embers-48.png
 |   |   |-- Embers-96.png
 |   |-- img
-|       |-- moon.png
+|       |-- moon.png`
 
 The file you are reading now is the README.md, which details how the addon works. The LICENSE file is a generic software license containing usage rights/guidelines.
 
