@@ -1,18 +1,22 @@
 // embers.js
 
+console.log('Embers content script loaded');
 // Function to inject CSS styles for dark mode
 function injectDarkModeStyles() {
   // Create a <style> element
   const styleElement = document.createElement('style');
   styleElement.textContent = `
     /* Dark mode styles */
+
+
     body.dark-mode {
+      color: #fff !important; /* Set all text and spans to white */
       background-color: #222 !important;
-      color: #ddd !important;
     }
 
     body.dark-mode * {
       color: #fff !important; /* Set all text and spans to white */
+      background-color: #222 !important;
     }
 
     body.dark-mode a {
@@ -66,13 +70,18 @@ function injectDarkModeStyles() {
       background-color: #555 !important; /* Hovered row background color */
     }
 
-    /* Dark mode styles for specific sites */
-
     /* Black background for spans with text */
     body.dark-mode span:not(:empty) {
       background-color: #000 !important;
       color: #fff !important;
       padding: 2px 4px; /* Optional: Add padding to make the background visible */
+    }
+
+    /* Dark mode styles for <main> element */s
+    body main {
+      background-color: #333 !important;
+      color: #fff !important;
+      padding: 20px; /* Adjust padding as needed */
     }
   `;
   // Append the <style> element to the <head> of the document
@@ -81,23 +90,45 @@ function injectDarkModeStyles() {
   console.log('Dark mode styles injected');
 }
 
-// Function to remove injected CSS styles
-function removeDarkModeStyles() {
-  // Check if styles have been injected
-  const styleElement = document.getElementById('dark-mode-styles');
-  if (styleElement) {
-    // Remove the <style> element from the <head> of the document
-    styleElement.parentNode.removeChild(styleElement);
+// Function to toggle dark mode and update storage
+function toggleDarkMode() {
+  // Toggle dark mode class on the body element of the webpage
+  document.body.classList.toggle('dark-mode');
+
+  // Check if dark mode class is now true
+  if (document.body.classList.contains('dark-mode')) {
+    // Inject dark mode styles
+    injectDarkModeStyles();
+    // Store the state of dark mode toggle button
+    browser.storage.local.set({ darkModeEnabled: true });
+  } else {
+    // Remove dark mode styles
+    document.head.removeChild(document.getElementById('dark-mode-styles'));
     // Log that dark mode styles have been removed
     console.log('Dark mode styles removed');
+    // Store the state of dark mode toggle button
+    browser.storage.local.set({ darkModeEnabled: false });
   }
 }
 
-// Inject dark mode styles when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', function () {
-  // Inject dark mode styles
-  injectDarkModeStyles();
-});
+// Function to apply dark mode based on stored state
+function applyDarkModeFromStorage() {
+  // Retrieve the stored state of dark mode toggle button
+  browser.storage.sync.get('darkModeEnabled').then(function(result) {
+    const darkModeEnabled = result.darkModeEnabled;
+    if (darkModeEnabled) {
+      // Enable dark mode
+      document.body.classList.add('dark-mode');
+      // Inject dark mode styles
+      injectDarkModeStyles();
+    }
+  }).catch(function(error) {
+    console.error('Error retrieving dark mode state:', error);
+  });
+}
+
+// Apply dark mode based on stored state
+applyDarkModeFromStorage();
 
 // Add a listener for messages from the extension
 browser.runtime.onMessage.addListener(function (message, sender, sendResponse) {
@@ -108,22 +139,10 @@ browser.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   if (message.toggleDarkMode !== undefined) {
     // Log that dark mode toggle is requested
     console.log('Toggle dark mode requested');
-
-    // Toggle dark mode class on the body element of the webpage
-    document.body.classList.toggle('dark-mode');
-
-    // Check if dark mode class is now true
-    if (document.body.classList.contains('dark-mode')) {
-      // Inject dark mode styles
-      injectDarkModeStyles();
-    } else {
-      // Remove dark mode styles
-      removeDarkModeStyles();
-    }
-
+    // Toggle dark mode and update storage
+    toggleDarkMode();
     // Log the current state of the dark mode class on the body element
     console.log('Dark mode class toggled:', document.body.classList.contains('dark-mode'));
-
     // Send a response indicating that dark mode has been toggled
     sendResponse({ toggled: true });
   }

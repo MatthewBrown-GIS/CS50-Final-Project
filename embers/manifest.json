@@ -9,6 +9,12 @@
     "48": "icons/Embers-48.png",
     "96": "icons/Embers-96.png"
   },
+  "browser_specific_settings": {
+  "gecko": {
+    "id": "8c39fb31-8530-4d67-bd50-0dfca8aed04f@localhost",
+    "strict_min_version": "42.0"
+  }
+  },
   "permissions": ["notifications", "webNavigation", "storage", "tabs", "activeTab" ],
   "browser_action": {
     "default_popup": "popup.html",
@@ -21,7 +27,7 @@
     {
       "matches": ["<all_urls>"],
       "js": ["embers.js"],
-      "run_at": "document_start"
+      "run_at": "document_end"
     }
   ]
 }

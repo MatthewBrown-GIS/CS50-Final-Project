@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const darkModeSwitch = document.getElementById('darkModeSwitch');
 
   // Get the current dark mode state from storage
-  browser.storage.local.get('darkModeEnabled').then(function(data) {
+  browser.storage.sync.get('darkModeEnabled').then(function(data) {
     // Set the checkbox state based on the stored dark mode state
     darkModeSwitch.checked = data.darkModeEnabled;
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   darkModeSwitch.addEventListener('change', function () {
     // Save the current dark mode state to storage
-    browser.storage.local.set({ darkModeEnabled: darkModeSwitch.checked }).then(function() {
+    browser.storage.sync.set({ darkModeEnabled: darkModeSwitch.checked }).then(function() {
       console.log('Dark mode state saved:', darkModeSwitch.checked);
 
       // Send a message to the content script to toggle dark mode
