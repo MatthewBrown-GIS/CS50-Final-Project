@@ -19,9 +19,9 @@ From the official [documentation](https://developer.mozilla.org/en-US/docs/Mozil
 You can also just go here: about:debugging#/runtime/this-firefox to load the addon.
 
 # Usage
->Once installed in the about:debugging page, you can simply click the Embers icon (a picture of a fox starting at a moon) to open the addon popup.
->Click the slider button to turn dark mode on and off.
->Your dark mode state should be remembered across tabs, meaning you do not need to constantly turn the addon on again every time you change web pages.
+1. Once installed in the about:debugging page, you can simply click the Embers icon (a picture of a fox starting at a moon) to open the addon popup.
+2. Click the slider button to turn dark mode on and off.
+3. Your dark mode state should be remembered across tabs, meaning you do not need to constantly turn the addon on again every time you change web pages.
 
 
 # Description of project
